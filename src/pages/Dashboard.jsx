@@ -36,7 +36,7 @@ function Dashboard() {
     // API Integration Methods
     const fetchStats = async () => {
         try {
-            const response = await api.get("/wallet/stats");
+            const response = await api.get("/api/wallet/stats");
             setStats(response.data);
         } catch (error) {
             console.log(error);
@@ -45,7 +45,7 @@ function Dashboard() {
 
     const changePassword = async () => {
         try {
-            await api.post("/user/change-password", { currentPassword, newPassword });
+            await api.post("/api/user/change-password", { currentPassword, newPassword });
             alert("Password Changed Successfully");
             setCurrentPassword("");
             setNewPassword("");
@@ -61,7 +61,7 @@ function Dashboard() {
             return;
         }
         try {
-            await api.post("/wallet/withdraw", { amount: Number(withdrawAmount) });
+            await api.post("/api/wallet/withdraw", { amount: Number(withdrawAmount) });
             alert("Withdrawal Request Submitted");
             setWithdrawAmount("");
             fetchWithdrawals();
@@ -74,7 +74,7 @@ function Dashboard() {
 
     const fetchNotifications = async () => {
         try {
-            const response = await api.get("/user/notifications");
+            const response = await api.get("/api/user/notifications");
             setNotifications(response.data);
         } catch (error) {
             console.log(error);
@@ -83,7 +83,7 @@ function Dashboard() {
 
     const fetchBalance = async () => {
         try {
-            const response = await api.get("/wallet/balance");
+            const response = await api.get("/api/wallet/balance");
             setBalance(response.data);
         } catch (error) {
             console.log(error);
@@ -92,7 +92,7 @@ function Dashboard() {
 
     const downloadStatement = async () => {
         try {
-            const response = await api.get("/user/statement", { responseType: "blob" });
+            const response = await api.get("/api/user/statement", { responseType: "blob" });
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement("a");
             link.href = url;
@@ -106,7 +106,7 @@ function Dashboard() {
 
     const fetchWithdrawals = async () => {
         try {
-            const response = await api.get("/wallet/withdrawals");
+            const response = await api.get("/api/wallet/withdrawals");
             setWithdrawals(response.data);
         } catch (error) {
             console.log(error);
@@ -115,7 +115,7 @@ function Dashboard() {
 
     const fetchProfile = async () => {
         try {
-            const response = await api.get("/user/profile");
+            const response = await api.get("/api/user/profile");
             setProfile(response.data);
         } catch (error) {
             console.log(error);
@@ -132,7 +132,7 @@ function Dashboard() {
             return;
         }
         try {
-            await api.post("/wallet/transfer", { receiverEmail, amount: Number(transferAmount) });
+            await api.post("/api/wallet/transfer", { receiverEmail, amount: Number(transferAmount) });
             alert("Transfer Successful");
             setReceiverEmail("");
             setTransferAmount("");
@@ -149,7 +149,7 @@ function Dashboard() {
 
     const fetchHistory = async () => {
         try {
-            const response = await api.get("/wallet/history");
+            const response = await api.get("/api/wallet/history");
             setTransactions(response.data);
         } catch (error) {
             console.log(error);

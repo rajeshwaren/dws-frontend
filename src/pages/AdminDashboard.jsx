@@ -25,7 +25,7 @@ async (id) => {
     try {
 
         await api.post(
-            `/admin/withdrawals/reject/${id}`
+            `/api/admin/withdrawals/reject/${id}`
         );
 
         alert("Rejected");
@@ -43,7 +43,7 @@ async (id) => {
     try {
 
         await api.post(
-            `/admin/withdrawals/approve/${id}`
+            `/api/admin/withdrawals/approve/${id}`
         );
 
         alert("Approved");
@@ -63,7 +63,7 @@ async (id) => {
 
         const response =
             await api.get(
-                "/admin/withdrawals"
+                "/api/admin/withdrawals"
             );
 
         setWithdrawals(
@@ -78,14 +78,14 @@ async (id) => {
     const fetchStats = async () => {
 
         const response =
-            await api.get("/admin/stats");
+            await api.get("/api/admin/stats");
 
         setStats(response.data);
     };
     const freezeUser = async (id) => {
 
     await api.post(
-        `/admin/freeze/${id}`
+        `/api/admin/freeze/${id}`
     );
 
     fetchUsers();
@@ -93,7 +93,7 @@ async (id) => {
 const unfreezeUser = async (id) => {
 
     await api.post(
-        `/admin/unfreeze/${id}`
+        `/api/admin/unfreeze/${id}`
     );
 
     fetchUsers();
@@ -102,7 +102,7 @@ const unfreezeUser = async (id) => {
     const fetchUsers = async () => {
 
         const response =
-            await api.get("/admin/users");
+            await api.get("/api/admin/users");
 
         setUsers(response.data);
     };
@@ -110,7 +110,7 @@ const unfreezeUser = async (id) => {
     const fetchTransactions = async () => {
 
         const response =
-            await api.get("/admin/transactions");
+            await api.get("/api/admin/transactions");
 
         setTransactions(response.data);
     };
@@ -119,7 +119,7 @@ const unfreezeUser = async (id) => {
         try {
 
             await api.post(
-                "/admin/add-money",
+                "/api/admin/add-money",
                 {
                     email,
                     amount: Number(amount)
