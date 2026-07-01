@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://dws-backend-production-989d.up.railway.app"
+    baseURL: "dws-backend-production-349f.up.railway.app"
 });
 
 api.interceptors.request.use(
